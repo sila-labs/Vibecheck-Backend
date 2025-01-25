@@ -1,0 +1,64 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+
+  build:
+    name: deployment
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+    
+    - name: Push To Registry
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: cdn-api
+        tags: latest
+        registry: registry.vibecheck.tech
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: discord
+      uses: sarisia/actions-status-discord@v1
+      if: always()
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        status: ${{ job.status }}
+        title: "CDN API"
+        description: "Build and deploy core streaming api"
+        username: CDN API GitHub Notifications
+        avatar_url: ${{ secrets.APP_LOGO }}
+  dev:
+      name: dev
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/dev'
+      steps:
+      - name: Check out code (dev)
+        uses: actions/checkout@v3
+
+      - name: Push to registry (dev)
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: cdn-api-dev
+          tags: latest
+          registry: registry.vibecheck.tech
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+   
+      - name: discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK_DEV }}
+          status: ${{ job.status }}
+          title: "CDN API - Dev"
+          description: "Build and deploy cdn api"
+          username: CDN API GitHub Notifications
+          avatar_url: ${{ secrets.APP_LOGO }}

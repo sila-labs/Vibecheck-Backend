@@ -1,0 +1,15 @@
+module vibe
+
+go 1.15
+
+require (
+	firebase.google.com/go v3.13.0+incompatible
+	github.com/gin-gonic/gin v1.8.2
+	github.com/go-sql-driver/mysql v1.6.0
+	github.com/gorilla/mux v1.8.0
+	github.com/joho/godotenv v1.4.0
+	github.com/sirupsen/logrus v1.9.0
+	github.com/thedevsaddam/gojsonq v2.3.0+incompatible
+	golang.org/x/crypto v0.4.0 // indirect
+	google.golang.org/api v0.124.0
+)

@@ -1,0 +1,24 @@
+{
+    "place_id": 325225233, 
+    "licence": "Data © OpenStreetMap contributors", 
+    "ODbL 1.0": "https://osm.org/copyright", 
+    "osm_type": "way", 
+    "osm_id": 11613671, 
+    "lat": "39.942948", 
+    "lon": "-74.79487", 
+    "display_name": "2, Deer Path, Eayrestown, Lumberton Township, Burlington County, New Jersey, 08048, United States", 
+    "address": 
+        {
+            "house_number": "2", 
+            "road": "Deer Path", 
+            "hamlet": "Eayrestown", 
+            "town": "Lumberton Township", 
+            "county": "Burlington County", 
+            "state": "New Jersey", 
+            "ISO3166-2-lvl4": "US-NJ", 
+            "postcode": "08048", 
+            "country": "United States", 
+            "country_code": "us"
+        }, 
+    "boundingbox": ["39.942898", "39.942998", "-74.79492", "-74.79482"]
+}

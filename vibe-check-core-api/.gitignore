@@ -1,0 +1,4 @@
+.env
+vibe
+log*.txt
+.DS_Store
