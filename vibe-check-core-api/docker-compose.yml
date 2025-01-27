@@ -1,0 +1,13 @@
+version: '3.9' # Specify your preferred Compose file version
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8086:8086" # Map port 8086 on the host to 8086 in the container
+    command: ["go", "run", "main.go"] # Update this to the correct file name
+    env_file:
+      - .env
+

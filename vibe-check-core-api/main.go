@@ -86,6 +86,8 @@ func main() {
 	config.InitConfig(APP_ENV)
 	config.PrintConfig()
 
+	log.Printf("CONFIGURATION: %+v\n", config.CONFIGURATION)
+
 	// if we get here and APP_ENV is still an empty string, kill program.
 	if APP_ENV == "" {
 		log.Fatal("APP_ENV not found!")
@@ -114,7 +116,13 @@ func main() {
 	log.Println("past InitCache")
 
 	var VIBE_PORT = config.CONFIGURATION.VIBE_PORT
-	fmt.Printf("Starting server on %v\n", VIBE_PORT)
+	// fmt.Printf("Starting server on %v\n", VIBE_PORT)
+	// var VIBE_PORT = config.CONFIGURATION.VIBE_PORT
+	log.Printf("VIBE_PORT: %s\n", VIBE_PORT)
+	if VIBE_PORT == "" {
+		log.Fatal("VIBE_PORT is not set!")
+	}
+
 
 	// Serve
 	if APP_ENV == "prod" {

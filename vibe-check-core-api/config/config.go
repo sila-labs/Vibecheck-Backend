@@ -32,7 +32,7 @@ func InitConfig(params ...string) Configuration {
 	if len(params) > 0 {
 		ENV = params[0]
 	}
-	fileName := fmt.Sprintf("./config/%s_config.json", ENV)
+	fileName := fmt.Sprintf("./config/%s_config.json", ENV) // filepath
 	gonfig.GetConf(fileName, &configuration)
 	CONFIGURATION = configuration
 	return configuration
