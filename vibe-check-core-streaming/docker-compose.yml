@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: golang_app
+    ports:
+      - "8080:8080" # Adjust the port mapping as needed
+    volumes:
+      - .:/usr/src/app # Bind your local directory to the container's working directory for development
+    command: ["go", "run", "vibe"] # Ensure this matches the intended execution command
